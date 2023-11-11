@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -33,9 +34,9 @@ public class Foyer {
 //------------------------------------------------------------------
 
 
-        @OneToMany
-       (cascade = CascadeType.ALL, mappedBy="foyer")
-        private Set<Bloc> bloc;
+        @OneToMany(mappedBy = "foyer")
+        @JsonIgnore
+        private Set<Bloc> blocs = new HashSet<>();
 
     }
 

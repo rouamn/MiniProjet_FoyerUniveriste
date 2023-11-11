@@ -17,7 +17,7 @@ public class Chambre {
 
     @Column(name="numeroChambre" ,unique = true)
 
-    private  String numeroChambre;
+    private  long numeroChambre;
     @Column(name="TypeChambre")
     private  long  TypeChambre;
     @Enumerated(EnumType.STRING)
