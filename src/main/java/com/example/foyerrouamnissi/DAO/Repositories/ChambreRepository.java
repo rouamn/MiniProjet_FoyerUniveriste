@@ -8,17 +8,17 @@ import java.util.List;
 
 public interface ChambreRepository  extends JpaRepository<Chambre,Long > {
     // 1- Recherche par numéro de chambre
-    //List<Chambre> findByNumeroChambre(long numeroChambre);
+    Chambre findByNumeroChambre(long numeroChambre);
 
     // 2- Recherche par type de chambre
     //List<Chambre> findByTypeChambre(TypeChambre typeChambre);
 
-    // 3- Recherche des chambres par bloc
-    List<Chambre> findByBloc(Chambre bloc);
+    //3- Recherche des chambres par bloc
+    //List<Chambre> findByBloc(Chambre bloc);
 
     // 4- Recherche des chambres par bloc et type de chambre
-   // List<Chambre> findByBlocAndTypeChambre(Chambre bloc, TypeChambre typeChambre);
+    // List<Chambre> findByBlocAndTypeChambre(Chambre bloc, TypeChambre typeChambre);
 
     // 5- Recherche des chambres par numéro de chambre et type de chambre
-    //List<Chambre> findByNumeroChambreAndTypeChambre(long numeroChambre, TypeChambre typeChambre);
+// List<Chambre> findByNumeroChambreAndTypeChambre(long numeroChambre, TypeChambre typeChambre);
 }

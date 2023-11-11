@@ -10,15 +10,16 @@ import java.util.List;
 
 public interface BlocRepository extends JpaRepository<Bloc ,Long > {
     //select bloc where nom bloc
-    List<Bloc> findByNomBloc(String nomBloc);
-    List<Bloc> findByCapaciteBloc(Long capaciteBloc);
-    List<Bloc> findByNomBlocAndCapaciteBloc(String nomBloc, Long capaciteBloc);
-    List<Bloc> findByNomBlocIgnoreCase(String nomBloc);
-    List<Bloc> findByCapaciteBlocGreaterThan(Long capaciteBloc);
-    List<Bloc> findByNomBlocContains(String nomBloc);
+    Bloc findByNomBloc(String nomBloc);
+
+    //List<Bloc> findByCapaciteBloc(Long capaciteBloc);
+    // List<Bloc> findByNomBlocAndCapaciteBloc(String nomBloc, Long capaciteBloc);
+    //List<Bloc> findByNomBlocIgnoreCase(String nomBloc);
+    //List<Bloc> findByCapaciteBlocGreaterThan(Long capaciteBloc);
+    //List<Bloc> findByNomBlocContains(String nomBloc);
     //List<Bloc> findAllByNomBlocOrderByNomBlocAsc();
-    List<Bloc> findByNomBlocOrCapaciteBloc(String nomBloc, Long capaciteBloc);
-    List<Bloc> findByFoyer(Foyer foyer);
-    List<Bloc> findByFoyerUniversite(Universite universite);
+    // List<Bloc> findByNomBlocOrCapaciteBloc(String nomBloc, Long capaciteBloc);
+    // List<Bloc> findByFoyer(Foyer foyer);
+    // List<Bloc> findByFoyerUniversite(Universite universite);
 
 }
