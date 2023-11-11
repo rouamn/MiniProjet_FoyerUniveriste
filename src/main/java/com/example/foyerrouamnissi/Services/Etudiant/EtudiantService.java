@@ -1,8 +1,6 @@
-package com.example.foyerrouamnissi.Services;
+package com.example.foyerrouamnissi.Services.Etudiant;
 
-import com.example.foyerrouamnissi.DAO.Entities.Bloc;
 import com.example.foyerrouamnissi.DAO.Entities.Etudiant;
-import com.example.foyerrouamnissi.DAO.Repositories.BlocRepository;
 import com.example.foyerrouamnissi.DAO.Repositories.EtudiantRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +9,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class EtudiantService implements IEtudiantService{
+public class EtudiantService implements IEtudiantService {
   EtudiantRepository etudiantRepository ;
 
 

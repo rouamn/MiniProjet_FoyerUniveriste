@@ -1,10 +1,10 @@
 package com.example.foyerrouamnissi.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.Set;
 
 @Getter
@@ -22,8 +22,17 @@ public class Foyer {
         @Column(name="capaciteFoyer")
         private  long  capaciteFoyer;
         //association parent
-        @OneToOne
+
+
+        @OneToOne(mappedBy = "foyer")
+        @JsonIgnore
         private Universite universite;
+
+
+
+//------------------------------------------------------------------
+
+
         @OneToMany
        (cascade = CascadeType.ALL, mappedBy="foyer")
         private Set<Bloc> bloc;

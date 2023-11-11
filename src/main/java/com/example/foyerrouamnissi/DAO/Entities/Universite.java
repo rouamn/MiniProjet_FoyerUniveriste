@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
-
 
 @Getter
 @Setter
@@ -19,9 +17,12 @@ public class Universite  {
     private  String nomUniversite;
     @Column(name="adresse")
     private String  adresse;
-    //assosiation child
-    @OneToOne(mappedBy = "universite")
-    private  Foyer foyer;
+
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Foyer foyer;
+
 
 
 

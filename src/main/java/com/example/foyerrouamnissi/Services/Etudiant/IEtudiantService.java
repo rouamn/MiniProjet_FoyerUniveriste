@@ -1,4 +1,4 @@
-package com.example.foyerrouamnissi.Services;
+package com.example.foyerrouamnissi.Services.Etudiant;
 
 import com.example.foyerrouamnissi.DAO.Entities.Bloc;
 import com.example.foyerrouamnissi.DAO.Entities.Etudiant;
