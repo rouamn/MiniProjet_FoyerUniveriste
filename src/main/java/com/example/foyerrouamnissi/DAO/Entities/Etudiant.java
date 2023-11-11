@@ -5,12 +5,16 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+@Builder
 @Getter
 @Setter
 @Entity
+
 @Table(name="Etudiant")
 public class Etudiant {
     @Id
@@ -27,8 +31,9 @@ public class Etudiant {
     @Column(name="dateNaissance")
     private Date dateNaissance;
     //association
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "etudiants", cascade = CascadeType.ALL)
     private Set<Reservation> reservation;
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.foyerrouamnissi.Services;
+package com.example.foyerrouamnissi.Services.Bloc;
 
 import com.example.foyerrouamnissi.DAO.Entities.Bloc;
 import com.example.foyerrouamnissi.DAO.Repositories.BlocRepository;
@@ -51,4 +51,6 @@ public class BlocService implements IBlocService {
     public void delete(Bloc b) {
         blocRepository.delete(b);
     }
+
+
 }

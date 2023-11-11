@@ -7,6 +7,7 @@ import lombok.Setter;
 import java.util.Date;
 import java.util.Set;
 
+
 @Getter
 @Setter
 @Entity
@@ -19,8 +20,10 @@ public class Reservation {
     private Date anneeUniversitaire;
     @Column(name="estVrai")
     private boolean  estVrai;
+
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Etudiant> etudiants;
+
 
 
 
