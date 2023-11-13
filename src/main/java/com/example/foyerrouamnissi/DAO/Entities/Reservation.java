@@ -24,6 +24,9 @@ public class Reservation {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Etudiant> etudiants;
 
+    @ManyToOne
+    @JoinColumn(name = "id_chambre")
+    private Chambre chambre;
 
 
 

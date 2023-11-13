@@ -19,15 +19,16 @@ public class Chambre {
 
     private  long numeroChambre;
     @Column(name="TypeChambre")
-    private  long  TypeChambre;
+
     @Enumerated(EnumType.STRING)
     private TypeChambre typeC;
 
 
-   // chambre 3andha un seul bloc  hia child
-    @ManyToOne
-    Bloc bloc;
 
+
+    @ManyToOne
+    @JoinColumn(name = "id_bloc")
+    private Bloc bloc;
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Reservation> reservations;

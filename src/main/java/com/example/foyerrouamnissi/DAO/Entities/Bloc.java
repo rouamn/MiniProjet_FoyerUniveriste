@@ -1,6 +1,7 @@
 package com.example.foyerrouamnissi.DAO.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 
@@ -37,5 +38,7 @@ public class Bloc {
 
 // relation entre bloc et chambres  (parent)
 @OneToMany(cascade = CascadeType.ALL, mappedBy = "bloc")
+@JsonIgnore
+
 private Set<Chambre> chambres = new HashSet<>();}
 
