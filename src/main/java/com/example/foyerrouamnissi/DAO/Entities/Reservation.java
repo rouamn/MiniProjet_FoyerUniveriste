@@ -1,10 +1,12 @@
 package com.example.foyerrouamnissi.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -22,7 +24,8 @@ public class Reservation {
     private boolean  estVrai;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Etudiant> etudiants;
+    @JsonIgnore
+    private Set<Etudiant> etudiants = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "id_chambre")
