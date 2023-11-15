@@ -9,11 +9,13 @@ import java.util.List;
 
 public interface IReservationService {
     Reservation addReservation(Reservation b);
-    List<Reservation> addReservation(List<Reservation> b);
-    Reservation editReservation(Reservation b);
+    List<Reservation> addReservations(List<Reservation> reservations);
+    Reservation editReservation(String id,Reservation b);
     List<Reservation> findAll();
-    Reservation findById(long id);
-    void deleteById(long id);
+    Reservation findById(String id);
+    void deleteById(String id);
     void delete(Reservation b);
+
+    Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(Long numChambre, Long cin) ;
 
 }
