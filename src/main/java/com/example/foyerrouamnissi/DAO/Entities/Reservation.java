@@ -23,6 +23,7 @@ public class Reservation {
     @Column(name="estVrai")
     private boolean  estVrai;
 
+    //parent
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Etudiant> etudiants = new HashSet<>();

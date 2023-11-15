@@ -42,6 +42,7 @@ public class Etudiant implements UserDetails {
     @Column(name = "role")
     private Role role;
     //association
+    //child
     @ManyToMany(mappedBy = "etudiants", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Reservation> reservation = new HashSet<>();
