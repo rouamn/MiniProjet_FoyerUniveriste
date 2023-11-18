@@ -5,6 +5,7 @@ import com.example.foyerrouamnissi.DAO.Repositories.ReservationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,6 +46,11 @@ public class ReservationService implements  IReservationService {
     @Override
     public void delete(Reservation b) {
         reservationRepository.delete(b);
+
+    }
+
+    @Override
+    public void createReservationWithChambre(Date anneeUniversitaire, boolean estVrai, long chambreId) {
 
     }
 }

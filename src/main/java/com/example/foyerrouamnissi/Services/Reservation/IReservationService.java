@@ -1,11 +1,10 @@
 package com.example.foyerrouamnissi.Services.Reservation;
 
-import com.example.foyerrouamnissi.DAO.Entities.Bloc;
-import com.example.foyerrouamnissi.DAO.Entities.Chambre;
-import com.example.foyerrouamnissi.DAO.Entities.Foyer;
-import com.example.foyerrouamnissi.DAO.Entities.Reservation;
+import com.example.foyerrouamnissi.DAO.Entities.*;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public interface IReservationService {
     Reservation addReservation(Reservation b);
@@ -15,5 +14,7 @@ public interface IReservationService {
     Reservation findById(long id);
     void deleteById(long id);
     void delete(Reservation b);
+    public void createReservationWithChambre(Date anneeUniversitaire, boolean estVrai, long chambreId);
 
-}
+
+    }
