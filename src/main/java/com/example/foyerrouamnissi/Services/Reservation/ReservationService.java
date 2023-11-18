@@ -10,8 +10,12 @@ import com.example.foyerrouamnissi.DAO.Repositories.FoyerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.util.Date;
+
 import java.time.LocalDate;
 import java.time.Year;
+
 import java.util.List;
 @Service
 public class ReservationService implements  IReservationService {
@@ -69,6 +73,10 @@ public class ReservationService implements  IReservationService {
     }
 
     @Override
+
+    public void createReservationWithChambre(Date anneeUniversitaire, boolean estVrai, long chambreId) {
+
+
     public Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(Long numChambre, Long cin) {
         //Recuperation des entity
         Chambre chambre = chambreRepository.findByNumeroChambre(numChambre);
@@ -91,5 +99,6 @@ public class ReservationService implements  IReservationService {
         etudiantRepository.save(etudiant);
         reservationRepository.save(reservation);
         return reservation;
+
     }
 }

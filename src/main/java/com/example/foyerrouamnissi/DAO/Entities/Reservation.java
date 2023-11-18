@@ -1,5 +1,6 @@
 package com.example.foyerrouamnissi.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,7 @@ public class Reservation {
     private Set<Etudiant> etudiants;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "id_chambre")
     private Chambre chambre;
 

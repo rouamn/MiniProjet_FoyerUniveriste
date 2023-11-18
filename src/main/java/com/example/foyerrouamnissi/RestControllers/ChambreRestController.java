@@ -15,6 +15,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/chambre")
 @AllArgsConstructor
+@CrossOrigin("*")
+
 public class ChambreRestController {
 
     IChambreService iChambreService;
@@ -55,7 +57,6 @@ public class ChambreRestController {
 
         return ResponseEntity.ok("Chambre created successfully.");
     }
-
 
     @GetMapping("/chambresParBloc/{nomBloc}")
     List<Chambre> getChambresParNomBloc(@PathVariable String nomBloc) {

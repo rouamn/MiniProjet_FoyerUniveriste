@@ -14,8 +14,7 @@ public interface IChambreService {
     Chambre findById(long id);
     void deleteById(long id);
     void delete(Chambre b);
-  void createChambreWithBloc(long numeroChambre, TypeChambre typeC, long blocId);
-
+  public void createChambreWithBloc(long numeroChambre, TypeChambre typeC, long blocId);
   List<Chambre> getChambresParNomBloc(String nomBloc);
   long nbChambreParTypeEtBloc(TypeChambre type, long idBloc);
 

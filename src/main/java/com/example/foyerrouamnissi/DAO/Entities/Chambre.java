@@ -3,6 +3,7 @@ package com.example.foyerrouamnissi.DAO.Entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Set;
 
@@ -30,9 +31,11 @@ public class Chambre {
     @JoinColumn(name = "id_bloc")
     private Bloc bloc;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chambre", cascade = CascadeType.ALL)
     private Set<Reservation> reservations;
 
 
-
+    public Long getBlocId() {
+        return bloc != null ? bloc.getIdBloc() : null;
+    }
 }
