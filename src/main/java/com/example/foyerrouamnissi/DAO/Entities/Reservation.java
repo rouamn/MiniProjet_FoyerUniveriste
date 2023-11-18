@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -16,11 +17,13 @@ import java.util.Set;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idReservation;
+    private String idReservation;
+
     @Column(name="anneeUniversitaire")
-    private Date anneeUniversitaire;
-    @Column(name="estVrai")
-    private boolean  estVrai;
+    private LocalDate anneeUniversitaire;
+
+    @Column(name="estValide")
+    private boolean  estValide;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Etudiant> etudiants;
