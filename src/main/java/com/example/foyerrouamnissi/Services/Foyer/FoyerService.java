@@ -65,5 +65,11 @@ UniversiteRepository universiteRepository;
         universiteRepository.save(u);
         return foyer;
     }
+    public List<Foyer> searchFoyers(String nom,  Integer capacite) {return foyerRepository.findByNomFoyerContainingIgnoreCaseAndCapaciteFoyer(nom , capacite);
+    }
+    public int getFoyerCount() {
+        return (int) foyerRepository.count();
+    }
+
 
 }

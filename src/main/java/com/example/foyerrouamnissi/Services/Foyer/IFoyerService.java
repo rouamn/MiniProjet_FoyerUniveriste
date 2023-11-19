@@ -15,4 +15,6 @@ public interface IFoyerService {
     void deleteById(long id);
     void delete(Foyer foyer);
     Foyer ajouterFoyerEtAffecterAUniversite (Foyer foyer, long idUniversite) ;
+    List<Foyer> searchFoyers(String nom, Integer capacite);
+    int getFoyerCount();
 }

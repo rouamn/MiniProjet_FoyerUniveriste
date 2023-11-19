@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/foyer")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class FoyerRestController {
     IFoyerService iFoyerService;
 
@@ -45,5 +46,15 @@ public class FoyerRestController {
     public Foyer ajouterFoyerEtAffecterAUniversite(@RequestBody Foyer foyer,
                                                    @PathVariable("idUniversite") long idUniversite) {
         return iFoyerService.ajouterFoyerEtAffecterAUniversite(foyer, idUniversite);
+    }
+    @GetMapping("/searchFoyer")
+    public List<Foyer> searchFoyers(@RequestParam(required = false) String nom,
+
+                                    @RequestParam(required = false) Integer capacite) {
+        return iFoyerService.searchFoyers(nom, capacite);
+    }
+    @GetMapping("/foyers/count")
+    public int getFoyerCount() {
+        return iFoyerService.getFoyerCount(); // Utilisez la méthode du service pour obtenir le nombre total de foyers
     }
 }
