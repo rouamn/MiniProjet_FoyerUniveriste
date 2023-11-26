@@ -15,50 +15,19 @@ public class EtudiantService implements IEtudiantService {
 
 
     @Override
-    public Etudiant addEtudiant(Etudiant e) {
-        return etudiantRepository.save(e);
-    }
-
+    public Etudiant addEtudiant(Etudiant etudiant) {
+        return etudiantRepository.save(etudiant);}
     @Override
-    public List<Etudiant> addEtudiants(List<Etudiant> etudiants) {
-        return etudiantRepository.saveAll(etudiants);
-    }
-
-    @Override
-    public Etudiant editEtudiant(Integer id, Etudiant e) {
-        if(etudiantRepository.findById(id).isPresent()){
-            Etudiant toUpdateEtudiant = etudiantRepository.findById(id).get();
-            toUpdateEtudiant.setNomEt(e.getNomEt());
-            toUpdateEtudiant.setPrenomEt(e.getPrenomEt());
-            toUpdateEtudiant.setCin(e.getCin());
-            toUpdateEtudiant.setEcole(e.getEcole());
-            toUpdateEtudiant.setDateNaissance(e.getDateNaissance());
-            toUpdateEtudiant.setReservations(e.getReservations());
-
-            return etudiantRepository.save(toUpdateEtudiant);
-        }
-        return null;
-    }
-
-    @Override
-    public List<Etudiant> findAll() {
+    public List<Etudiant> getAllEtudiants() {
         return etudiantRepository.findAll();
     }
-
     @Override
-    public Etudiant findById(Integer id) {
-        return etudiantRepository.findById(id).get();
+    public Etudiant updateEtudiant(Etudiant etudiant) {
+        if (etudiantRepository.existsById(etudiant.getIdEtudiant())) {
+            return etudiantRepository.save(etudiant);
+        }
+        return null ;
     }
-
     @Override
-    public void deleteById(Integer id) {
-        etudiantRepository.deleteById(id);
-
-    }
-
-    @Override
-    public void delete(Etudiant e) {
-        etudiantRepository.delete(e);
-
-    }
+    public void deleteEtudiant(Integer id) { etudiantRepository.deleteById(id); }
 }

@@ -10,34 +10,30 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 @AllArgsConstructor
 @RequestMapping("/etudiant")
 public class EtudiantRestController {
     @Autowired
     IEtudiantService iEtudiantService;
 
-    @GetMapping("/findAll")
-    List<Etudiant> findAll(){
-        return  iEtudiantService.findAll();
+    @PostMapping("/addEtudiant")
+    Etudiant addEtudiant(@RequestBody Etudiant etudiant) {
+        return iEtudiantService.addEtudiant(etudiant);
     }
 
-    @PostMapping("/add")
-    Etudiant addEtudiant(@RequestBody Etudiant e) {
-        return iEtudiantService.addEtudiant(e);
+    @PutMapping("/updateEtudiant")
+    Etudiant updateEtudiant(@RequestBody Etudiant etudiant) {
+        return iEtudiantService.updateEtudiant(etudiant);
     }
 
-    @PutMapping("update/{id}")
-    Etudiant updateEtudiant(@PathVariable("id") Integer id, @RequestBody Etudiant e){
-        return iEtudiantService.editEtudiant(id, e);
+    @GetMapping("/getAllEtudiants")
+    List<Etudiant> getAllEtudiants() {
+        return iEtudiantService.getAllEtudiants();
     }
 
-    @DeleteMapping("/delete/{id}")
-    void deleteEtudiant(@PathVariable("id") Integer id){
-        iEtudiantService.deleteById(id);
-    }
-
-    @GetMapping("/{id}")
-    Etudiant findById(@PathVariable("id") Integer id){
-        return iEtudiantService.findById(id);
+    @DeleteMapping("/deleteEtudiant/{id}")
+    void deleteEtudiant(@PathVariable Integer id) {
+        iEtudiantService.deleteEtudiant(id);
     }
 }

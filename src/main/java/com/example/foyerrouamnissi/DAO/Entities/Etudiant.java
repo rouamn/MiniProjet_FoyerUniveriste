@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "etudiant")
-public class Etudiant {
+public class Etudiant  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEtudiant;
@@ -29,6 +29,8 @@ public class Etudiant {
     private String ecole;
     @Column(name = "dateNaissance")
     private Date dateNaissance; //JJ/MM/YYYY
+    @Column(name = "email")
+    private String email;
 
     //child
     @ManyToMany(mappedBy = "etudiants",cascade = CascadeType.ALL)
