@@ -2,23 +2,21 @@ package com.example.foyerrouamnissi.RestControllers;
 
 
 import com.example.foyerrouamnissi.DAO.Entities.Bloc;
-import com.example.foyerrouamnissi.DAO.Entities.Chambre;
 import com.example.foyerrouamnissi.Services.Bloc.IBlocService;
-import com.example.foyerrouamnissi.Services.Chambre.ChambreService;
 import com.example.foyerrouamnissi.Services.Chambre.IChambreService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
 
 @RestController
 @RequestMapping("bloc")
+@CrossOrigin("*")
 @AllArgsConstructor
+@RequiredArgsConstructor
 
 public class BlocRestController {
     @Autowired
@@ -30,15 +28,25 @@ public class BlocRestController {
     List<Bloc> findAll(){
         return iBlocService.findAll();
     }
+
     @PostMapping("/add")
-    Bloc addBloc(@RequestBody Bloc b){
-        return iBlocService.addBloc(b);
+    public ResponseEntity<String> createBlocWithFoyer(@RequestBody Bloc bloc) {
+        // Extract the necessary information from the Bloc entit
+        long capaciteBloc = bloc.getCapaciteBloc();
+        String nomBloc = bloc.getNomBloc();
+        long idFoyer = bloc.getFoyer().getIdFoyer();
+        // Call the ChambreService to create the Chambre entity
+        iBlocService.createBlocWithFoyer(capaciteBloc, nomBloc, idFoyer);
+
+        return ResponseEntity.ok("Bloc created successfully.");
     }
 
-    //@PutMapping("update/{id}")
-    //Bloc updateBloc(@PathVariable("id") Long id, @RequestBody Bloc b){
-    // return iBlocService.editBloc(id, b);
-    //}
+
+    @GetMapping("/blocsbyfoyer/{nomFoyer}")
+    List<Bloc> getBlocParNomFoyer(@PathVariable String nomFoyer) {
+        return iBlocService.getBlocParNomFoyer(nomFoyer);
+    }
+
 
     @DeleteMapping("/delete/{id}")
     void deleteBloc(@PathVariable("id") Long id){
@@ -49,7 +57,8 @@ public class BlocRestController {
     Bloc findById(@PathVariable("id") Long id){
         return iBlocService.findById(id);
     }
-    @PutMapping("affecterBlocAFoyer/{nomBloc}/{nomFoyer}")
+
+            @PutMapping("affecterBlocAFoyer/{nomBloc}/{nomFoyer}")
     Bloc affecterBlocAFoyer(@PathVariable("nomBloc") String nomBloc,
                             @PathVariable("nomFoyer") String nomFoyer){
         return iBlocService.affecterBlocAFoyer(nomBloc,nomFoyer);
@@ -58,6 +67,11 @@ public class BlocRestController {
     Bloc affecterChambresABloc(@PathVariable("nomBloc") String nomBloc,
                                @RequestBody List<Long> numChambre){
         return iBlocService.affecterChambresABloc(numChambre,nomBloc);
+    }
+
+    @PutMapping("update")
+    Bloc update(@RequestBody Bloc b){
+        return iBlocService.editBloc(b);
     }
 
    /* @PostMapping("/ajouter")
@@ -89,7 +103,3 @@ public class BlocRestController {
         return ResponseEntity.ok("Bloc and its associated chambres have been deleted.");
     }*/
 }
-
-
-
-

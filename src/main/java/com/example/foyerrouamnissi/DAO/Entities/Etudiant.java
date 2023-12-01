@@ -31,6 +31,8 @@ public class Etudiant  {
     private Date dateNaissance; //JJ/MM/YYYY
     @Column(name = "email")
     private String email;
+    @Column(name = "password")
+    private  String password;
 
     //child
     @ManyToMany(mappedBy = "etudiants",cascade = CascadeType.ALL)

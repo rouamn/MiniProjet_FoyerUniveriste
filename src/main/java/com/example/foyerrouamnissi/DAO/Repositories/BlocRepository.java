@@ -11,6 +11,7 @@ import java.util.List;
 public interface BlocRepository extends JpaRepository<Bloc ,Long > {
     //select bloc where nom bloc
     Bloc findByNomBloc(String nomBloc);
+    List<Bloc> findByFoyer_NomFoyer(String nomFoyer);
 
     //List<Bloc> findByCapaciteBloc(Long capaciteBloc);
     // List<Bloc> findByNomBlocAndCapaciteBloc(String nomBloc, Long capaciteBloc);

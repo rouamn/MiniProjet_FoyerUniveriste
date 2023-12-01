@@ -23,18 +23,18 @@ public class BlocService implements IBlocService {
 
     @Override
     public Bloc addBloc(Bloc b) {
-     return    blocRepository.save(b);
+        return    blocRepository.save(b);
     }
 
     @Override
     public List<Bloc> addBlocs(List<Bloc> b) {
-       return  blocRepository.saveAll(b);//on ajoute des lignes dans la bd
+        return  blocRepository.saveAll(b);//on ajoute des lignes dans la bd
 
     }
 
     @Override
     public Bloc editBloc(Bloc b) {
-       return blocRepository.save(b); // pour faire la edit
+        return blocRepository.save(b); // pour faire la edit
     }
 
     @Override
@@ -45,9 +45,7 @@ public class BlocService implements IBlocService {
     @Override
     public Bloc findById(long id) {
         return blocRepository.findById(id).get();
-        //objet ou objet vide+novalue present
-        //oubien
-        //return blocRepository.findById(id).orElse(Bloc.builder().idBloc(0).nomBloc("pas de bloc").build());
+
 
     }
 
@@ -97,7 +95,27 @@ public class BlocService implements IBlocService {
         foyerRepository.save(foyer);
         return bloc;
     }
+
+    @Override
+    public void createBlocWithFoyer(long capaciteBloc, String nomBloc, long idFoyer) {
+        // Create a new Chambre object
+        Bloc bloc = new Bloc();
+        bloc.setCapaciteBloc(capaciteBloc);
+        bloc.setNomBloc(nomBloc);
+
+        // Retrieve the corresponding Bloc object from the database
+        Foyer foyer = foyerRepository.findById(idFoyer).orElse(null);
+        if (foyer != null) {
+            // Set the bloc property of the Chambre object
+            bloc.setFoyer(foyer);
+        }
+
+        // Save the Chambre object to the database
+        blocRepository.save(bloc);
     }
 
-
-
+    @Override
+    public List<Bloc> getBlocParNomFoyer(String nomFoyer) {
+        return blocRepository.findByFoyer_NomFoyer(nomFoyer);
+    }
+}

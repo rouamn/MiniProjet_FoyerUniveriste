@@ -2,8 +2,8 @@ package com.example.foyerrouamnissi.Services.Bloc;
 
 import com.example.foyerrouamnissi.DAO.Entities.Bloc;
 
-import java.util.List;
 
+import java.util.List;
 public interface IBlocService {
     Bloc addBloc(Bloc b);
     List<Bloc> addBlocs (List<Bloc> b);
@@ -14,5 +14,7 @@ public interface IBlocService {
     void delete(Bloc b);
     Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) ; //bloc parent , chambres child
     Bloc affecterBlocAFoyer( String nomBloc, String nomFoyer) ;
+    public void createBlocWithFoyer(long capaciteBloc, String nomBloc, long idFoyer);
+    List<Bloc> getBlocParNomFoyer(String nomFoyer);
 
 }
