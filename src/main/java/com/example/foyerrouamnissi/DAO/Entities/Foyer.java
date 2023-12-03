@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,10 +23,10 @@ public class Foyer {
         private  String nomFoyer;
         @Column(name="capaciteFoyer")
         private  long  capaciteFoyer;
-        //association parent
 
 
-        @OneToOne(mappedBy = "foyer")
+       @OneToOne(mappedBy = "foyer" , fetch = FetchType.LAZY)
+
         @JsonIgnore
         private Universite universite;
 
@@ -34,9 +35,18 @@ public class Foyer {
 //------------------------------------------------------------------
 
 
+        @OneToMany
+                (cascade = CascadeType.ALL, mappedBy="foyer")
+        private Set<Bloc> bloc;
         @OneToMany(mappedBy = "foyer")
         @JsonIgnore
         private Set<Bloc> blocs = new HashSet<>();
 
-    }
+    @Transient
+    private String universiteName; 
 
+
+
+
+
+}

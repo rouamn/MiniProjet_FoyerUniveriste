@@ -19,6 +19,7 @@ import java.util.Set;
 @RestController
 @RequestMapping("bloc")
 @AllArgsConstructor
+@CrossOrigin("*")
 
 public class BlocRestController {
     @Autowired

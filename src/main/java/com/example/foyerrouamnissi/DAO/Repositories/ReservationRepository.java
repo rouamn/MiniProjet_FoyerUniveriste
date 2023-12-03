@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface ReservationRepository extends JpaRepository<Reservation,String > {
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+
     // 1- Recherche des réservations validées
     //List<Reservation> findByEstValideTrue();
 
@@ -17,6 +18,9 @@ public interface ReservationRepository extends JpaRepository<Reservation,String 
 
     // 3- Recherche des réservations par année et validité
     //List<Reservation> findByAnneeUniversitaireAndEstValide(LocalDate anneeUniversitaire, boolean estValide);
+    Reservation findByIdReservation(long id);
+    // 1- Recherche des réservations validées
+   // List<Reservation> findByEstValideTrue();
 
 
     @Query("SELECT r FROM Reservation r WHERE r.chambre = ?1")
@@ -30,6 +34,7 @@ public interface ReservationRepository extends JpaRepository<Reservation,String 
     List<Reservation> findByEtudiantsIdEtudiant(long idEtudiant);
 
     // 3- Recherche des réservations par année et validité
+  //  List<Reservation> findByAnneeUniversitaireAndEstValide(LocalDate anneeUniversitaire, boolean estValide);
     List<Reservation> findByAnneeUniversitaireAndEstValide(LocalDate anneeUniversitaire, boolean estValide);
 
 

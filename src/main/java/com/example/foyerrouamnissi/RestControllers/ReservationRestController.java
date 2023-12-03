@@ -16,6 +16,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/reservation")
 @AllArgsConstructor
+
+@CrossOrigin("*")
+
  public class ReservationRestController {
     @Autowired
     IReservationService iReservationService;
@@ -32,18 +35,32 @@ import java.util.List;
 
     @PutMapping("update/{id}")
     Reservation updateReservation(@PathVariable("id") String id, @RequestBody Reservation b) {
+
+        return iReservationService.editReservation(b);
+
         return iReservationService.editReservation(id, b);
+
 
         //Reservation update(@RequestBody Reservation b){
         //return iReservationService.editReservation( b);
     }
 
     @DeleteMapping("/delete/{id}")
+
+    void delete(@PathVariable("id") long id) {
+
     void delete(@PathVariable("id") String id) {
+
         iReservationService.deleteById(id);
     }
 
     @GetMapping("/{id}")
+    Reservation findById(@PathVariable("id") long id) {
+        return iReservationService.findById(id);
+    }
+
+   /* @PostMapping("/ajouterReservationEtAssignerAChambreEtAEtudiant/{numChambre}/{cin}")
+
     Reservation findById(@PathVariable("id") String id) {
         return iReservationService.findById(id);
     }
@@ -52,6 +69,8 @@ import java.util.List;
     Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(@PathVariable("numChambre") Long numChambre,
                                                                 @PathVariable("cin") Long cin) {
         return iReservationService.ajouterReservationEtAssignerAChambreEtAEtudiant(numChambre, cin);
+
+    } */
 
     }
 }

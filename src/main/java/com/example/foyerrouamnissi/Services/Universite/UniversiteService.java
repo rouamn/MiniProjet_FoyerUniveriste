@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,10 +37,10 @@ FoyerRepository foyerRepository;
     }
 
     @Override
+
     public List<Universite> findAll() {
         return universiteRepository.findAll();
     }
-
     @Override
     public Universite findById(long id) {
         return universiteRepository.findById(id).get();
@@ -79,4 +80,5 @@ FoyerRepository foyerRepository;
         universiteRepository.save(universite);
         return universite;
     }
+
 }

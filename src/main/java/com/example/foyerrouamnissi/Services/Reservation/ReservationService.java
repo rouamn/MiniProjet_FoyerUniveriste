@@ -50,6 +50,7 @@ public class ReservationService implements  IReservationService {
         return null;
     }
 
+
     @Override
     public List<Reservation> findAll() {
         return reservationRepository.findAll();
@@ -77,7 +78,10 @@ public class ReservationService implements  IReservationService {
     public void createReservationWithChambre(Date anneeUniversitaire, boolean estVrai, long chambreId) {
 
 
+   /* public Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(Long numChambre, Long cin) {
+
     public Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(Long numChambre, Long cin) {
+
         //Recuperation des entity
         Chambre chambre = chambreRepository.findByNumeroChambre(numChambre);
         Etudiant etudiant = etudiantRepository.findByCin(cin);
@@ -99,6 +103,10 @@ public class ReservationService implements  IReservationService {
         etudiantRepository.save(etudiant);
         reservationRepository.save(reservation);
         return reservation;
+
+    } */
+    }
+}
 
     }
 }

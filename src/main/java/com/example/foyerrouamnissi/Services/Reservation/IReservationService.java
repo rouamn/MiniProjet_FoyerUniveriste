@@ -9,7 +9,11 @@ import java.util.Set;
 public interface IReservationService {
     Reservation addReservation(Reservation b);
     List<Reservation> addReservations(List<Reservation> reservations);
+
+    Reservation editReservation(Reservation b);
+
     Reservation editReservation(String id,Reservation b);
+
     List<Reservation> findAll();
     Reservation findById(String id);
     void deleteById(String id);
@@ -17,6 +21,10 @@ public interface IReservationService {
     public void createReservationWithChambre(Date anneeUniversitaire, boolean estVrai, long chambreId);
 
 
+
+
+
+  //  Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(Long numChambre, Long cin) ;
 
     }
 

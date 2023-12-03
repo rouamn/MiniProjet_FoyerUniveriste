@@ -12,6 +12,9 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name="Chambre")
+
+
+
 public class Chambre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
