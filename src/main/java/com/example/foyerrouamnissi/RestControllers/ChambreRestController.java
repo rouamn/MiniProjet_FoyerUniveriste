@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/chambre")
 @AllArgsConstructor
 @CrossOrigin("*")
@@ -22,6 +23,8 @@ import java.util.List;
 public class ChambreRestController {
 
     IChambreService iChambreService;
+    //by zeineb
+    IBlocService iBlocService;
 
     @GetMapping("/findAll")
     List<Chambre> findAll(){
@@ -45,6 +48,14 @@ public class ChambreRestController {
     Chambre findById(@PathVariable("id") Long id){
         return iChambreService.findById(id);
     }
+ 
+//by zeineb
+@GetMapping("/{idBloc}/chambres")
+public ResponseEntity<List<Chambre>> getChambresByBlocId(@PathVariable Long idBloc) {
+    List<Chambre> chambres = iBlocService.getChambresByBlocId(idBloc);
+    return ResponseEntity.ok(chambres);
+}
+
 
     @PostMapping("/ajouter")
     public ResponseEntity<String> createChambreWithBloc(@RequestBody Chambre chambre) {

@@ -12,6 +12,23 @@ import java.util.Set;
 
 public interface BlocRepository extends JpaRepository<Bloc ,Long > {
     Bloc findByNomBloc(String nomBloc);
+
+    List<Bloc> findByFoyer_NomFoyer(String nomFoyer);
+    @Query("SELECT b FROM Bloc b " +
+            "JOIN b.foyer f " +
+            "WHERE LOWER(b.nomBloc) LIKE %:blocName%")
+
+    List<Bloc> searchBlocsByBlocName(@Param("blocName") String blocName);
+
+
+    @Query("SELECT b FROM Bloc b " +
+            "JOIN b.foyer f " +
+            "WHERE f.idFoyer = :idfoyer")
+    List<Bloc> searchBlocsByIdFoyer(@Param("idfoyer") long idfoyer);
+
+
+
+
     List<Bloc> findByCapaciteBloc(Long capaciteBloc);
     List<Bloc> findByNomBlocAndCapaciteBloc(String nomBloc, Long capaciteBloc);
     List<Bloc> findByNomBlocIgnoreCase(String nomBloc);

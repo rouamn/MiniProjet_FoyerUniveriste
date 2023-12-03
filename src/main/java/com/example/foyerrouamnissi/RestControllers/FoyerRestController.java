@@ -1,5 +1,11 @@
 package com.example.foyerrouamnissi.RestControllers;
 
+import com.example.foyerrouamnissi.DAO.Entities.Chambre;
+import com.example.foyerrouamnissi.DAO.Entities.Etudiant;
+import com.example.foyerrouamnissi.DAO.Entities.Foyer;
+import com.example.foyerrouamnissi.DAO.Entities.Universite;
+import com.example.foyerrouamnissi.Services.Bloc.IBlocService;
+
 import com.example.foyerrouamnissi.DAO.Entities.*;
 import com.example.foyerrouamnissi.Services.Chambre.IChambreService;
 import com.example.foyerrouamnissi.Services.Foyer.IFoyerService;
@@ -13,11 +19,14 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin("*")
+
 @RequestMapping("/foyer")
 @AllArgsConstructor
 @CrossOrigin("*")
 public class FoyerRestController {
     IFoyerService iFoyerService;
+    IBlocService iBlocService;
 
     @GetMapping("/findAll")
     List<Foyer> findAll() {
@@ -144,6 +153,14 @@ public class FoyerRestController {
         List<Foyer> foyers = iFoyerService.searchFoyersByNomUniversite(universityName);
         return ResponseEntity.ok(foyers);
     }
+    //by zeineb
+    @GetMapping("/{idBloc}/foyer")
+    public Foyer getFoyerByBlocId(@PathVariable Long idBloc) {
+        Foyer foyer = iBlocService.getFoyerByBlocId(idBloc);
+        return foyer;
+    }
+}
+
   @GetMapping("/search/byBloc")
     public ResponseEntity<List<Foyer>> searchFoyersByBloc(
             @RequestParam(required = false) String bloc
