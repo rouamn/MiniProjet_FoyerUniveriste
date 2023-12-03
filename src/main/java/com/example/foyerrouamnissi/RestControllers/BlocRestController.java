@@ -24,6 +24,8 @@ import java.util.Set;
 @AllArgsConstructor
 @RequiredArgsConstructor
 
+@CrossOrigin("*")
+
 public class BlocRestController {
     @Autowired
     IBlocService iBlocService;

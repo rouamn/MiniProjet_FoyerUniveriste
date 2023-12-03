@@ -55,6 +55,7 @@ public class BlocService implements IBlocService {
         blocRepository.delete(b);
     }
 
+
     @Override
     public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) {
         //Cascade
@@ -64,16 +65,23 @@ public class BlocService implements IBlocService {
         for (long numC : numChambre) {
             Chambre c = chambreRepository.findByNumeroChambre(numC);
             chambres.add(c);
+
+        Set<Chambre> chambres= new HashSet<>();
+        for (long numC : numChambre){
+           // Chambre c = chambreRepository.findByNumeroChambre(numChambre);
+         //   chambres.add(c);
             //affecter child (chambre) au parent (bloc)
-            c.setBloc(bloc);
+          //  c.setBloc(bloc);
             //sauvegarde
-            chambreRepository.save(c);
+          //  chambreRepository.save(c);
         }
         bloc.setChambres(chambres);
         //mise à jour et sauvegarde
         blocRepository.save(bloc);
         return bloc;
     }
+
+
 
     @Override
     public Bloc affecterBlocAFoyer(String nomBloc, String nomFoyer) {
@@ -156,6 +164,7 @@ public class BlocService implements IBlocService {
             return bloc.getFoyer(); // Assuming the getFoyer() method exists in the Bloc entity
         }
         return null; // or throw an exception if appropriate
+
     }
 
 

@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.io.Serializable;
 import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,28 +15,36 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name="Chambre")
-public class Chambre {
+
+
+
+public class Chambre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idChambre")
+
     private long idChambre;
 
     @Column(name="numeroChambre" ,unique = true)
 
     private  long numeroChambre;
     @Column(name="TypeChambre")
-    private  long  TypeChambre;
+
     @Enumerated(EnumType.STRING)
     private TypeChambre typeC;
 
 
-   // chambre 3andha un seul bloc  hia child
+
+
     @ManyToOne
-    Bloc bloc;
+    @JoinColumn(name = "id_bloc")
+    private Bloc bloc;
 
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chambre", cascade = CascadeType.ALL)
     private Set<Reservation> reservations;
 
 
-
+    public Long getBlocId() {
+        return bloc != null ? bloc.getIdBloc() : null;
+    }
 }

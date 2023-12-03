@@ -35,7 +35,7 @@ public class EtudiantService implements IEtudiantService {
 
     @Override
     public Etudiant findById(long id) {
-        return etudiantRepository.findById(id).orElse(Etudiant.builder().idEtudiant(0).nomEt("pas de bloc").build());
+        return etudiantRepository.findById(id).get();
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "bloc")
-public class Bloc {
+public class Bloc  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,7 @@ public class Bloc {
 
 
     @ManyToOne
+
     @JoinColumn(name="id_foyer")
     private Foyer foyer;
 
@@ -38,6 +39,9 @@ public class Bloc {
     private Set<Chambre> chambres = new HashSet<>();
 
 
+    @JsonIgnore
+    Foyer foyer;
+
     public Bloc (long capaciteBloc)  {
         this.capaciteBloc = capaciteBloc;
     }
@@ -46,4 +50,10 @@ public class Bloc {
         this.nomBloc = nomBloc;
     }
 }
+
+// relation entre bloc et chambres  (parent)
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "bloc")
+@JsonIgnore
+
+private Set<Chambre> chambres = new HashSet<>();}
 

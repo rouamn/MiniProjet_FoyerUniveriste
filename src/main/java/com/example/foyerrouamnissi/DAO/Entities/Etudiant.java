@@ -1,8 +1,10 @@
 package com.example.foyerrouamnissi.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import lombok.AllArgsConstructor;
@@ -10,7 +12,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Builder
+
 @Getter
 @Setter
 @Entity
@@ -31,8 +33,8 @@ public class Etudiant {
     @Column(name="dateNaissance")
     private Date dateNaissance;
     //association
-    @ManyToMany(mappedBy = "etudiants", cascade = CascadeType.ALL)
-    private Set<Reservation> reservation;
+    @ManyToMany(mappedBy = "etudiants",cascade = CascadeType.ALL)
+    private Set<Reservation> reservations = new HashSet<>();
 
 
 

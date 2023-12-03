@@ -35,4 +35,6 @@ public interface IBlocService {
     Foyer getFoyerByBlocId(Long idBloc);
 
     Bloc updateBlocEtAffecterFoyerById(long blocId, long foyerId, Bloc updatedBloc);
+
+
 }
