@@ -6,16 +6,20 @@ import com.example.foyerrouamnissi.Services.Bloc.IBlocService;
 import com.example.foyerrouamnissi.Services.Chambre.IChambreService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/chambre")
 @AllArgsConstructor
 public class ChambreRestController {
 
     IChambreService iChambreService;
+    //by zeineb
+    IBlocService iBlocService;
 
     @GetMapping("/findAll")
     List<Chambre> findAll(){
@@ -40,7 +44,12 @@ public class ChambreRestController {
     Chambre findById(@PathVariable("id") Long id){
         return iChambreService.findById(id);
     }
-
+//by zeineb
+@GetMapping("/{idBloc}/chambres")
+public ResponseEntity<List<Chambre>> getChambresByBlocId(@PathVariable Long idBloc) {
+    List<Chambre> chambres = iBlocService.getChambresByBlocId(idBloc);
+    return ResponseEntity.ok(chambres);
+}
 
 
 
