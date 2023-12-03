@@ -12,6 +12,8 @@ public interface IBlocService {
     Bloc findById(long id);
     void deleteById(long id);
     void delete(Bloc b);
+    Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) ; //bloc parent , chambres child
+    Bloc affecterBlocAFoyer( String nomBloc, String nomFoyer) ;
 
 
 }

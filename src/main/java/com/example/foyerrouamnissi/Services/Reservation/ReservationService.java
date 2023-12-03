@@ -37,8 +37,17 @@ public class ReservationService implements  IReservationService {
     }
 
     @Override
-    public Reservation editReservation(Reservation b) {
-        return reservationRepository.save(b);
+    public Reservation editReservation(String id, Reservation b) {
+        if(reservationRepository.findById(id).isPresent()){
+            Reservation toUpdateReservation = reservationRepository.findById(id).get();
+            //toUpdateReservation.setIdReservation(r.getIdReservation());
+            toUpdateReservation.setAnneeUniversitaire(b.getAnneeUniversitaire());
+            toUpdateReservation.setEstValide(b.isEstValide());
+            toUpdateReservation.setEtudiants(b.getEtudiants());
+
+            return reservationRepository.save(toUpdateReservation);
+        }
+        return null;
     }
 
 
@@ -49,12 +58,12 @@ public class ReservationService implements  IReservationService {
     }
 
     @Override
-    public Reservation findById(long id) {
+    public Reservation findById(String id) {
         return reservationRepository.findById(id).get();
     }
 
     @Override
-    public void deleteById(long id) {
+    public void deleteById(String id) {
         reservationRepository.deleteById(id);
     }
 
@@ -70,6 +79,9 @@ public class ReservationService implements  IReservationService {
 
 
    /* public Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(Long numChambre, Long cin) {
+
+    public Reservation ajouterReservationEtAssignerAChambreEtAEtudiant(Long numChambre, Long cin) {
+
         //Recuperation des entity
         Chambre chambre = chambreRepository.findByNumeroChambre(numChambre);
         Etudiant etudiant = etudiantRepository.findByCin(cin);
@@ -93,5 +105,8 @@ public class ReservationService implements  IReservationService {
         return reservation;
 
     } */
+    }
+}
+
     }
 }

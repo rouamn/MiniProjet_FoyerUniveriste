@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -37,6 +38,8 @@ public class Bloc  {
 
 
 // relation entre bloc et chambres  (parent)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bloc")
-    private Set<Chambre> chambres;
-}
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "bloc")
+@JsonIgnore
+
+private Set<Chambre> chambres = new HashSet<>();}
+
