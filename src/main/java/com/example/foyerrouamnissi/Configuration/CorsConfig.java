@@ -11,7 +11,7 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/chambre")
+                registry.addMapping("/chambre/**")
                         .allowedOrigins("http://localhost:4200") // Replace with the appropriate frontend URL
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
@@ -24,3 +24,5 @@ public class CorsConfig {
         };
     }
 }
+
+

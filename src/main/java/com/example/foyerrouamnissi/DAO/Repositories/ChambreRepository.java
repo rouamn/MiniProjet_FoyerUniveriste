@@ -11,7 +11,9 @@ import java.util.List;
 
 public interface ChambreRepository  extends JpaRepository<Chambre,Long > {
     // 1- Recherche par numéro de chambre
-    Chambre findByNumeroChambre(long numeroChambre);
+    List<Chambre> findByNumeroChambre(Long numeroChambre);
+    List<Chambre> findByNumeroChambreAndTypeC(Long numeroChambre, TypeChambre typeC);
+    List<Chambre> findByTypeC(TypeChambre typeC);
 
     // 2- Recherche par type de chambre
     //List<Chambre> findByTypeChambre(TypeChambre typeChambre);
@@ -23,7 +25,6 @@ public interface ChambreRepository  extends JpaRepository<Chambre,Long > {
     // List<Chambre> findByBlocAndTypeChambre(Chambre bloc, TypeChambre typeChambre);
 
     // 5- Recherche des chambres par numéro de chambre et type de chambre
-// List<Chambre> findByNumeroChambreAndTypeChambre(long numeroChambre, TypeChambre typeChambre);
 
     List<Chambre> findByBloc_NomBloc(String nomBloc);
     long countByTypeCAndBloc_IdBloc(TypeChambre type, long idBloc);
@@ -34,6 +35,8 @@ public interface ChambreRepository  extends JpaRepository<Chambre,Long > {
     List<Chambre> findNonReservedRoomsByFoyerAndType(@Param("foyer") Foyer foyer, @Param("type") TypeChambre type, @Param("currentYear") String currentYear);
 
 
+    @Query("SELECT c.typeC, COUNT(c) FROM Chambre c GROUP BY c.typeC")
+    List<Object[]> countChambresByType();
 
 
 }
