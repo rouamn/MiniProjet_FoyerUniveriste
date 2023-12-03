@@ -15,4 +15,5 @@ public interface IBlocService {
     Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) ; //bloc parent , chambres child
     Bloc affecterBlocAFoyer( String nomBloc, String nomFoyer) ;
 
+
 }

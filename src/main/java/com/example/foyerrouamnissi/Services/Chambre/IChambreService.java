@@ -3,6 +3,7 @@ package com.example.foyerrouamnissi.Services.Chambre;
 import com.example.foyerrouamnissi.DAO.Entities.Bloc;
 import com.example.foyerrouamnissi.DAO.Entities.Chambre;
 import com.example.foyerrouamnissi.DAO.Entities.TypeChambre;
+import com.example.foyerrouamnissi.DTO.ChambreTypeStatistics;
 
 import java.util.List;
 
@@ -20,7 +21,13 @@ public interface IChambreService {
 
   List<Chambre> getChambresNonReserveParNomFoyerEtTypeChambre(String nomFoyer, TypeChambre type);
 
+   Chambre updateChambre(Chambre updatedChambre);
+
+
+   List<Chambre> findByNumeroChambreAndTypeC(Long numeroChambre, TypeChambre typeC);
+
+   List<ChambreTypeStatistics> getChambreTypeStatistics();
 
 
 
-}
+  }

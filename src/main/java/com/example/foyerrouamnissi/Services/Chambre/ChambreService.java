@@ -7,11 +7,13 @@ import com.example.foyerrouamnissi.DAO.Entities.TypeChambre;
 import com.example.foyerrouamnissi.DAO.Repositories.BlocRepository;
 import com.example.foyerrouamnissi.DAO.Repositories.ChambreRepository;
 import com.example.foyerrouamnissi.DAO.Repositories.FoyerRepository;
+import com.example.foyerrouamnissi.DTO.ChambreTypeStatistics;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -93,6 +95,46 @@ FoyerRepository foyerRepository;
         // You can use java.time.LocalDate or other methods to determine the current academic year.
         // For simplicity, you can return a hardcoded value for now.
         return "2023-2024";
+    }
+
+
+    public Chambre updateChambre(Chambre updatedChambre) {
+        // Check if the Chambre with the given ID exists
+        Chambre existingChambre = chambreRepository.findById(updatedChambre.getIdChambre())
+                .orElseThrow(() -> new RuntimeException("Chambre not found with id: " + updatedChambre.getIdChambre()));
+
+        // Update the fields you want to change
+        existingChambre.setNumeroChambre(updatedChambre.getNumeroChambre());
+        existingChambre.setTypeC(updatedChambre.getTypeC());
+        existingChambre.setBloc(updatedChambre.getBloc());
+        // You can update other fields as needed
+
+        // Save and return the updated Chambre
+        return chambreRepository.save(existingChambre);
+    }
+
+    public List<Chambre> findByNumeroChambreAndTypeC(Long numeroChambre, TypeChambre typeC) {
+
+
+        if (numeroChambre!=null && typeC!=null){
+
+            return chambreRepository.findByNumeroChambreAndTypeC(numeroChambre,typeC);
+
+        } else if( numeroChambre!=null){
+            return  chambreRepository.findByNumeroChambre(numeroChambre);
+
+        } else if (typeC!=null){
+            return  chambreRepository.findByTypeC(typeC);
+        } else  {
+            return chambreRepository.findAll();
+        }
+    }
+
+    public List<ChambreTypeStatistics> getChambreTypeStatistics() {
+        List<Object[]> results = chambreRepository.countChambresByType();
+        return results.stream()
+                .map(result -> new ChambreTypeStatistics((TypeChambre) result[0], (Long) result[1]))
+                .collect(Collectors.toList());
     }
 
 

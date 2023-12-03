@@ -5,15 +5,18 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @Table(name="Chambre")
-public class Chambre {
+public class Chambre implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idChambre")
+
     private long idChambre;
 
     @Column(name="numeroChambre" ,unique = true)
