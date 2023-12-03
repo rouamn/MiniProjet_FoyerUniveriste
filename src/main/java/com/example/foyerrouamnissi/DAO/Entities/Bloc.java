@@ -1,6 +1,7 @@
 package com.example.foyerrouamnissi.DAO.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 
@@ -16,7 +17,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Table(name = "bloc")
-public class Bloc {
+public class Bloc  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +32,7 @@ public class Bloc {
 
 
     @ManyToOne
+    @JsonIgnore
     Foyer foyer;
 
 

@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/chambre")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class ChambreRestController {
 
     IChambreService iChambreService;
