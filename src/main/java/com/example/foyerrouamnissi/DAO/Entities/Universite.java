@@ -1,6 +1,7 @@
 package com.example.foyerrouamnissi.DAO.Entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,8 +23,5 @@ public class Universite  {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Foyer foyer;
-
-
-
 
 }

@@ -79,4 +79,15 @@ FoyerRepository foyerRepository;
         universiteRepository.save(universite);
         return universite;
     }
+
+    @Override
+    public Universite ajouterUniversiteEtAffecterAFoyer(Universite universite, long idFoyer) {
+        //foyer child
+        Foyer u= foyerRepository.findById(idFoyer).get();
+        universite.setFoyer(u);
+        u.setUniversite(universite);
+        foyerRepository.save(u);
+
+        return universite;
+    }
 }

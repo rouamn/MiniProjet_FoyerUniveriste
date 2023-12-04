@@ -1,6 +1,7 @@
 package com.example.foyerrouamnissi.RestControllers;
 
 import com.example.foyerrouamnissi.DAO.Entities.Etudiant;
+import com.example.foyerrouamnissi.DAO.Entities.Foyer;
 import com.example.foyerrouamnissi.DAO.Entities.Reservation;
 import com.example.foyerrouamnissi.DAO.Entities.Universite;
 import com.example.foyerrouamnissi.Services.Reservation.IReservationService;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/universite")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class UniversiteRestController {
     IUniversiteService iUniversiteService;
 
@@ -55,4 +57,9 @@ public class UniversiteRestController {
         return  iUniversiteService.desaffecterFoyerAUniversite(idUniversite);
     }
 
+    @PutMapping("ajouterUniversiteEtAffecterAFoyer/{idFoyer}")
+        public Universite ajouterUniversiteEtAffecterAFoyer(@RequestBody Universite universite,
+                                                   @PathVariable("idFoyer") long idFoyer) {
+        return iUniversiteService.ajouterUniversiteEtAffecterAFoyer(  universite ,idFoyer);
+    }
 }

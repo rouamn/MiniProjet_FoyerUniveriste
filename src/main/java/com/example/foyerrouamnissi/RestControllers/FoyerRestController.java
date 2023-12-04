@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/foyer")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class FoyerRestController {
     IFoyerService iFoyerService;
 

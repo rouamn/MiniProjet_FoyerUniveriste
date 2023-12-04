@@ -20,6 +20,14 @@ public class CorsConfig {
                         .allowedOrigins("http://localhost:4200") // Replace with the appropriate frontend URL
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
+                registry.addMapping("/universite/**") // Update the mapping to include "/reservation/**" to match "/reservations/{idChambre}"
+                        .allowedOrigins("http://localhost:4200") // Replace with the appropriate frontend URL
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedHeaders("*");
+                registry.addMapping("/foyer/**") // Update the mapping to include "/reservation/**" to match "/reservations/{idChambre}"
+                        .allowedOrigins("http://localhost:4200") // Replace with the appropriate frontend URL
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedHeaders("*");
             }
         };
     }
